@@ -1,0 +1,123 @@
+Owner: Mariette Souppe
+Class: CMPS 156 Network Programming
+File: design.txt
+Assignment 1
+
+Purpose:
+This file implements a minix shell program. This shells allows the user to run other programs such 
+as ls, exit, sorting a file, and writing a command and placing its contents into another file.
+
+Data:
+1. listenfd
+	- Value for the listen file descriptor
+
+2. connfd
+	- Value for the connection file descriptor for connected socket
+
+3. n
+	- Checks the status of the read() and write() functions
+
+4. line[MAXLINE+1], printAll[MAXLINE+1], and recvline[MAXLINE+1]
+	- Stores data to be sent or received between the hosts
+
+5. AF_INET
+	- Specifies the communication protocol used
+
+6. SOCK_STREAM
+	- Specifies the type of socket
+
+7. sockaddr
+	- Socket address structures to cast pointers
+
+8. servaddr
+	- Stores the server address
+
+9. sockfd
+	- Socket file descriptor returned from a previous socket()
+
+Operations:
+1. int socket(int domain, int type, int protocol)
+	- Description: Create an endpoint for communication
+	- Input: domain, type, protocol
+	- Output: On success a file descriptor for the new socket, -1 error
+	- Result: Allows a communication to be built
+
+2. int bind(int sockfd, const struct sockaddr  *my_addr, socklen_t addrlen)
+	- Description: Bind a name to a socket
+	- Input: sockfd, my_addr, addrlen
+	- Output: 0 on success, -1 on error
+	- Result: Gives the socket a local address
+
+3. int listen(int sockfd, int backlog)
+	- Description: Listen for connections on a socket
+	- Input: sockfd, backlog
+	- Output: Return 0 on success, -1 on error
+	- Result: Checks for available connections
+
+4. int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen)
+	- Description: Accept a connection on a socket
+	- Input: sockfd, addr, addrlen
+	- Output: Return non-negative integer on success, -1 on error
+	- Result: Accepts the connect from the host
+	
+5. ssize_t read(int fd, void *buf, size_t count)
+	- Description: Read from a file descriptor
+	- Input: fd, buf, count
+	- Output: # of bytes read and file position
+	- Result: Reads the data it's being sent
+	
+6. ssize_t write(int fd, const void *buf, size_t count);
+	- Description: Write to a file descriptor
+	- Input: fd, buf, count
+	- Output: On success returns # of bytes, returns -1 on error
+	- Result: Writes data to other host
+	
+7. int close(int fildes)
+	- Description: Close a file descriptor
+	- Input: fildes
+	- Output: Return 0 on success, return -1 on error
+	- Result: Closes the socket after host wants to shut down
+	
+8. char *strncat(char *dest, const char *src, size_t n) 
+	- Description: Concatenate two strings
+	- Input: dest, src, n
+	- Output: Returns a pointer to the resulting string dest
+	- Result: Combines strings together
+	
+9. 
+	
+Algorithms:
+
+Server algorithm:
+1. Create a socket
+
+2. Bind operating system that links port number to process
+
+3. Listen to operating system to accept connections
+
+4. Waits for a connection
+
+5. while (1)
+
+6. 		Write data to client
+
+7. 		Read data from client
+
+		Continue to write and read until client decides to exit
+		
+8. End while loop
+
+Client algorithm:
+1. Create a socket
+
+2. Operating system initiates TCP three-way connection
+
+3. while (1)
+
+4. 		Write data to client
+
+5. 		Read data from client
+
+		Continue to write and read until client decides to exit
+		
+6. End while loop
