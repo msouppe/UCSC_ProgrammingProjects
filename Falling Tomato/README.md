@@ -2,7 +2,7 @@
 
 ##Description
 
-Mobile first web-app that retrieves API weather data to display how much warmer or colder the current forecast is compared to the day before, depending on a user's location.
+Gravity based android game which accesses a phone's accelerometer and gyroscope for an object to bounce off boundaries, fall through holes, and into a drain.
 
 ##Technologies Used
 
