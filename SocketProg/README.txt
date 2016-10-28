@@ -1,6 +1,5 @@
 Owner: Mariette Souppe
 Class: CMPE 156 Computer Networking
-Assignment 1
 January 23, 2015
 
 How to compile program:
